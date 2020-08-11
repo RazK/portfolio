@@ -89,7 +89,7 @@ body{
     border-left:1px dotted #f2f2f2;
   }
   .title{
-    width: 180px;
+    width: 200px;
     font-family: monospace;
     position: absolute;
     background: var(--title-background);
@@ -122,19 +122,19 @@ body{
   .title--top{
     top:0;
     left: 50%;
-    margin-left: -90px;
+    margin-left: -100px;
     --title-background: #8BFFB5;
   }
   .title--left{
     top:50%;
-    left: -70px;
+    left: -80px;
     margin-top: -20px;
     transform: rotate(-90deg);
     --title-background: #7AFFFF;
   }
   .title--right{
     top:50%;
-    right: -70px;
+    right: -80px;
     margin-top: -20px;
     transform: rotate(90deg);
     --title-background: #FFFD80;
