@@ -72,18 +72,27 @@ document.querySelector('#viewport').addEventListener('mousemove', e => {
 
 let touchStartX, touchStartY;
 let touchStartPosX, touchStartPosY;
+let touchDx=0, touchDy=0;
 document.querySelector('#viewport').addEventListener('touchstart', e => {
   touchStartX=e.touches[0].clientX;
   touchStartY=e.touches[0].clientY;
   touchStartPosX = scrollPosX;
   touchStartPosY = scrollPosY;
+  e.preventDefault();
 })
 
 document.querySelector('#viewport').addEventListener('touchmove', e => {
-  let dx = e.touches[0].clientX - touchStartX;
-  let dy = e.touches[0].clientY - touchStartY;
-  scrollPosX = touchStartPosX + dx;
-  scrollPosY = touchStartPosY + dy;
+  touchDx = e.touches[0].clientX - touchStartX;
+  touchDy = e.touches[0].clientY - touchStartY;
+  scrollPosX = touchStartPosX + touchDx;
+  scrollPosY = touchStartPosY + touchDy;
+  e.preventDefault();
+})
+
+document.querySelector('#viewport').addEventListener('touchend', e => {
+  if(touchDx < 10 && touchDy < 10){
+    e.target.click();
+  }
   e.preventDefault();
 })
 
@@ -123,10 +132,11 @@ class Block{
     this.el.style.backgroundImage = `url(${blockInfo.icon})`;
   }
   bindEvents(){
-    this.el.addEventListener('click', e => {
-      let rect = this.el.getBoundingClientRect();
-      openDialog(rect.x + rect.width/2, rect.y + rect.height/2, this.info.title, this.info.hero, this.info.text);
-    })
+    this.el.addEventListener('click', e => this.open());
+  }
+  open(){
+    let rect = this.el.getBoundingClientRect();
+    openDialog(rect.x + rect.width/2, rect.y + rect.height/2, this.info.title, this.info.hero, this.info.text);
   }
 }
 
@@ -163,7 +173,7 @@ function closeDialog(){
   setTimeout(() => {
     dialog.style.display='none';
       dialog.querySelector('header img').src = '';
-  }, 1000)
+  }, 800)
 }
 
 const App = {
