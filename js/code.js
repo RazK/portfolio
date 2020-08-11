@@ -78,6 +78,8 @@ document.querySelector('#viewport').addEventListener('touchstart', e => {
   touchStartY=e.touches[0].clientY;
   touchStartPosX = scrollPosX;
   touchStartPosY = scrollPosY;
+  touchDx=0;
+  touchDy=0;
   e.preventDefault();
 })
 
