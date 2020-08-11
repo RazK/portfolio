@@ -77,6 +77,7 @@ document.querySelector('#viewport').addEventListener('touchstart', e => {
   touchStartY=e.touches[0].clientY;
   touchStartPosX = scrollPosX;
   touchStartPosY = scrollPosY;
+  e.preventDefault();
 })
 
 document.querySelector('#viewport').addEventListener('touchmove', e => {
@@ -84,6 +85,7 @@ document.querySelector('#viewport').addEventListener('touchmove', e => {
   let dy = e.touches[0].clientY - touchStartY;
   scrollPosX = touchStartPosX + dx;
   scrollPosY = touchStartPosY + dy;
+  e.preventDefault();
 })
 
 window.addEventListener('mouseout', e => {
