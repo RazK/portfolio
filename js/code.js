@@ -98,8 +98,9 @@ document.querySelector('#viewport').addEventListener('touchend', e => {
   e.preventDefault();
 })
 
-window.addEventListener('mouseout', e => {
+document.querySelector('#viewport').addEventListener('mouseout', e => {
   scrollingDirectionX = 0;
+  scrollingDirectionY = 0;
 })
 resize();
 animateScroll();
@@ -145,7 +146,10 @@ class Block{
 function openDialog(x, y, title, hero, text) {
   canScroll = false;
   let dialog = document.querySelector('#dialog');
+  let blackout = document.querySelector('#blackout');
   dialog.style.display = 'block';
+  blackout.style.display = 'block';
+  dialog.querySelector('.dialog__content').scrollTop = 0;
   dialog.querySelector('article').innerHTML = text;
   dialog.querySelector('header h1').textContent = title;
   dialog.querySelector('header img').src = hero;
@@ -154,28 +158,34 @@ function openDialog(x, y, title, hero, text) {
   fill.style.left = (x -dialog.offsetLeft)  + 'px';
   fill.style.top = (y-dialog.offsetTop) + 'px';
   dialog.classList.add('dialog--open');
+  blackout.classList.add('blackout--open');
   window.history.pushState({}, 'dialog', '#dialog')
   function close(){
     window.removeEventListener('popstate', close);
+    dialog.querySelector('.btnBack').removeEventListener('click', pop);
+    blackout.removeEventListener('click', pop);
     closeDialog();
   }
   function pop(){
-    dialog.querySelector('.btnBack').removeEventListener('click', pop);
     window.history.back();
   }
   window.addEventListener('popstate', close);
   dialog.querySelector('.btnBack').addEventListener('click', pop);
+  blackout.addEventListener('click', pop);
 
 }
 
 function closeDialog(){
   let dialog = document.querySelector('#dialog');
+  let blackout = document.querySelector('#blackout');
   canScroll = true;
   dialog.classList.remove('dialog--open');
+  blackout.classList.remove('blackout--open');
   setTimeout(() => {
-    dialog.style.display='none';
+      blackout.style.display='none'
+      dialog.style.display='none';
       dialog.querySelector('header img').src = '';
-  }, 800)
+  }, 600)
 }
 
 const App = {
