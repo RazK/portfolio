@@ -1,3 +1,6 @@
+:root{
+  --cell-size: 50px;
+}
 body{
   margin: 0;
   padding: 0;
@@ -5,54 +8,53 @@ body{
   font-family: 'Inconsolata', monospace;
 
 }
-.topbar{
-  font-size: 8px;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100px;
-  box-sizing: border-box;
-  color: #fff;
-  font-size: 28px;
-  border-bottom: 1px solid #f2f2f2;
-}
-.viewport{
-  position: absolute;
-  left: 0;
-  font-size: 8px;
-  top: 100px;
-  right: 0;
-  bottom: 0;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  max-width: 85em;
-  margin: auto;
-}
-    .content{
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .grid{
-      display: grid;
-      grid-template-columns: repeat(16, 5em);
-      grid-template-rows: repeat(16, 5em);
-      gap:1em;
-    }
-    .block{
-      background: #D8D8D8;
-      border-radius: 50%;
-      z-index: 1;
-      border: 3px solid #D8D8D8;
-      box-sizing: border-box;
-      background-size: cover;
-      cursor: pointer;
-    }
+  .content{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .grid{
+    display: grid;
+    grid-template-columns: repeat(16, var(--cell-size));
+    grid-template-rows: repeat(16, var(--cell-size));
+    gap:10px;
+  }
+  .block{
+    width: 100px;
+    height: 100px;
+    background: #D8D8D8;
+    border-radius: 50%;
+    z-index: 1;
+    border: 3px solid #D8D8D8;
+    box-sizing: border-box;
+    background-size: cover;
+    cursor: pointer;
+  }
+  .viewport{
+    position: absolute;
+    left: 0;
+    top: 100px;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 850px;
+    margin: auto;
+  }
+  .topbar{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100px;
+    box-sizing: border-box;
+    color: #fff;
+    font-size: 28px;
+    border-bottom: 1px solid #f2f2f2;
+  }
   .viewport.right{
     cursor: url('../cursors/right.png') 16 16, auto;
   }
@@ -86,59 +88,54 @@ body{
     width: 1px;
     border-left:1px dotted #f2f2f2;
   }
-  .titles{
-    font-size: 6px;
-  }
   .title{
-    width: 20em;
+    width: 200px;
     font-family: monospace;
     position: absolute;
     background: var(--title-background);
     text-align: center;
-    padding: .5em;
-    height: 4em;
+    padding: 5px;
+    height: 40px;
     box-sizing: border-box;
-  }
-  .title span{
-    font-size: 2.4em;
+    font-size: 24px;
   }
   .title:after{
     position: absolute;
     top: 0;
     left: 100%;
     content: '';
-    width: 0;
-    height: 0;
-    border-bottom: 4em solid transparent;
-    border-left: 4em solid var(--title-background);
+    width: 0px;
+    height: 0px;
+    border-bottom: 40px solid transparent;
+    border-left: 40px solid var(--title-background);
   }
   .title:before{
     position: absolute;
     top: 0;
     right: 100%;
     content: '';
-    width: 0;
-    height: 0;
-    border-bottom: 4em solid transparent;
-    border-right: 4em solid var(--title-background);
+    width: 0px;
+    height: 0px;
+    border-bottom: 40px solid transparent;
+    border-right: 40px solid var(--title-background);
   }
   .title--top{
     top:0;
     left: 50%;
-    margin-left: -10em;
+    margin-left: -100px;
     --title-background: #8BFFB5;
   }
   .title--left{
     top:50%;
-    left: -8em;
-    margin-top: -2em;
+    left: -80px;
+    margin-top: -20px;
     transform: rotate(-90deg);
     --title-background: #7AFFFF;
   }
   .title--right{
     top:50%;
-    right: -8em;
-    margin-top: -2em;
+    right: -80px;
+    margin-top: -20px;
     transform: rotate(90deg);
     --title-background: #FFFD80;
   }
@@ -146,16 +143,16 @@ body{
   .title--bottom{
     bottom:0;
     left: 50%;
-    margin-left: -9em;
+    margin-left: -90px;
     --title-background: #FF7DD0;
   }
   .title--bottom:before{
-    border-top: 4em solid transparent;
-    border-right: 4em solid var(--title-background);
+    border-top: 40px solid transparent;
+    border-right: 40px solid var(--title-background);
   }
   .title--bottom:after{
-    border-top: 4em solid transparent;
-    border-left: 4em solid var(--title-background);
+    border-top: 40px solid transparent;
+    border-left: 40px solid var(--title-background);
   }
 
   .block--physical{
@@ -178,13 +175,13 @@ body{
     left: 0;
     height: calc(100% - 30px);
     width: calc(100% - 30px);
-    max-width: 1000px;
+    max-width: 500px;
     margin: 15px;
   }
-  @media only screen and (min-width: 1060px) {
+  @media only screen and (min-width: 560px) {
     .dialog{
       left: 50%;
-      margin-left: -500px;
+      margin-left: -250px;
     }
   }
   .dialog .dialog__fill{
@@ -201,7 +198,6 @@ body{
     border-radius: 50%;
     transform: scale(.001);
     opacity: 0;
-    will-change: transform, opacity;
     transition: transform .5s, opacity 1.5s;
   }
   .dialog.dialog--open .dialog__fill{
@@ -216,7 +212,7 @@ body{
     right: 0;
     bottom: 0;
     opacity: 0;
-    padding: 0;
+    padding: 1em;
     overflow: auto;
   }
   .dialog.dialog--open .dialog__content{
@@ -229,18 +225,6 @@ body{
   .dialog__content img {
     width: 100%;
     max-width: 600px;
-    margin: auto;
-    display: block;
-  }
-  .dialog__content img.dialog__hero{
-    max-width: 100%;
-    width: 100%;
-  }
-  .dialog__content article{
-    padding: .25em .75em;
-    padding-bottom: 2em;
-    font-size: 20px;
-    text-align: justify;
   }
   .btnBack{
     position: absolute;
@@ -266,7 +250,7 @@ body{
   grid-template-columns: 1fr 100px 100px;
   align-items: center;
   height: 100%;
-  max-width: 85em;
+  max-width: 850px;
   margin: auto;
   outline: 1px solid #fff;
   background: #32084C;
@@ -284,29 +268,4 @@ body{
 .viewport{
   outline: 1px solid #fff;
   background: #32084C;
-}
-
-@media (min-width: 680px), (min-height:880px) {
-  .topbar, .viewport{
-    font-size: 15px;
-  }
-  .titles{
-    font-size: 10px;
-  }
-}
-@media only screen and (min-width: 1280px) {
-  .topbar, .viewport{
-    font-size: 20px;
-  }
-  .titles{
-    font-size: 15px;
-  }
-}
-@media only screen and (min-width: 1800px) {
-  .topbar, .viewport{
-    font-size: 24px;
-  }
-  .titles{
-    font-size: 15px;
-  }
 }

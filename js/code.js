@@ -8,13 +8,13 @@ let scrollEnabled = true;
 let contentSize = 0;
 function resize(){
   contentSize = document.querySelector('.content').offsetHeight;
-  console.log(contentSize);
-  if(window.innerWidth > 850){
+  console.log(document.querySelector('#viewport').scrollWidth);
+  /*if(document.querySelector('#viewport').scrollWidth < window.innerWidth){
     scrollEnabled = false;
     document.querySelector('.content').style.transform = '';
   } else{
     scrollEnabled = true;
-  }
+  }*/
 }
 window.addEventListener('resize', resize);
 function animateScroll(){
@@ -104,8 +104,8 @@ window.addEventListener('mouseout', e => {
 resize();
 animateScroll();
 
-const gridCellSize = 50;
-const gridCellSpacing = 10;
+const gridCellSize = 5;
+const gridCellSpacing = 1;
 const gridSize = 16;
 
 let blocksContainer = document.querySelector('#viewport .content .grid');
@@ -129,7 +129,7 @@ class Block{
 
     this.size =
       this.el.style.height =
-      this.el.style.width = (gridCellSize * blockInfo.size + gridCellSpacing * (blockInfo.size-1)) + 'px';
+      this.el.style.width = (gridCellSize * blockInfo.size + gridCellSpacing * (blockInfo.size-1)) + 'em';
 
     this.el.style.backgroundImage = `url(${blockInfo.icon})`;
   }
