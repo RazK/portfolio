@@ -19,8 +19,8 @@ let blocks = [{
 },
 {
   title: 'Q-Crawler',
-  location: {x: -3, y:-4},
-  size: 3,
+  location: {x: -2, y:-4},
+  size: 2,
   type: 'virtual',
   icon: 'images/qcrawler-icon.png',
   hero: 'images/qcrawler-hero.png',
@@ -58,7 +58,7 @@ let blocks = [{
 {
   title: 'Smart Knife Handle',
   location: {x: -3, y:2},
-  size: 2,
+  size: 3,
   type: 'physical',
   icon: 'images/knife-icon2.png',
   hero: 'images/knife-hero.jpg',
@@ -79,8 +79,8 @@ If you’re curious about the handle’s CAD model, you can find it <a href="htt
 },
 {
   title: 'Kinder Star Wars - CONFIDENTIAL',
-  location: {x: 0, y:0},
-  size: 2,
+  location: {x: 0, y:-1},
+  size: 3,
   type: 'none',
   icon: 'images/starwars-kinder-icon.png',
   hero: 'images/starwars-kinder-hero.png',
