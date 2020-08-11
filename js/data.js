@@ -60,7 +60,7 @@ let blocks = [{
   location: {x: -3, y:2},
   size: 2,
   type: 'physical',
-  icon: 'images/knife-icon.png',
+  icon: 'images/knife-icon2.png',
   hero: 'images/knife-hero.jpg',
   text: `
 <p align=center>Can any novice use a knife like a professional chef?</p>
@@ -82,8 +82,8 @@ If you’re curious about the handle’s CAD model, you can find it <a href="htt
   location: {x: 0, y:0},
   size: 2,
   type: 'none',
-  icon: 'images/starwars-icon.png',
-  hero: 'images/starwars-hero.png',
+  icon: 'images/starwars-kinder-icon.png',
+  hero: 'images/starwars-kinder-hero.png',
   text: `
 <p>This is a novel immersive-reality game which I developed in a course about toy design, mentored by <a href="https://www.loubaton.com/">Yaron Loubaton</a> in a collaboration between Bezalel Academy and Kinder™.</p>
 

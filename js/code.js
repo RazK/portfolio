@@ -4,20 +4,21 @@ const scrollMargin=50;
 const scrollAnimationSpeed = 10;
 const headerSize = 100;
 let canScroll = true;
+let scrollEnabled = true;
 let contentSize = 0;
 function resize(){
   contentSize = document.querySelector('.content').offsetHeight;
   console.log(contentSize);
   if(window.innerWidth > 850){
-    canScroll = false;
+    scrollEnabled = false;
     document.querySelector('.content').style.transform = '';
   } else{
-    canScroll = true;
+    scrollEnabled = true;
   }
 }
 window.addEventListener('resize', resize);
 function animateScroll(){
-  if(canScroll){
+  if(canScroll && scrollEnabled){
     scrollPosX += scrollingDirectionX * scrollAnimationSpeed;
     let scrollLimit = contentSize/2 - window.innerWidth / 2;
     if(scrollPosX > scrollLimit){
@@ -155,9 +156,13 @@ function openDialog(x, y, title, hero, text) {
 }
 
 function closeDialog(){
+  let dialog = document.querySelector('#dialog');
   canScroll = true;
   dialog.classList.remove('dialog--open');
-  setTimeout(() => {dialog.style.display='none'}, 1000)
+  setTimeout(() => {
+    dialog.style.display='none';
+      dialog.querySelector('header img').src = '';
+  }, 1000)
 }
 
 const App = {
