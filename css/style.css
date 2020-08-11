@@ -245,19 +245,25 @@ body{
     transition: opacity 1s .5s;
     opacity: 1;
   }
-
-.topbar{
+.topbar header{
   display: grid;
   grid-template-columns: 1fr 100px 100px;
   align-items: center;
+  height: 100%;
+  max-width: 850px;
+  margin: auto;
+  outline: 1px solid #fff;
 }
-.topbar a{
+.topbar header a{
   text-align: center;
   color: #fff;
   text-decoration: none;
   font-size: 22px;
 }
-.topbar .name{
+.topbar header .name{
   padding-left: 20px;
   font-size: 36px;
+}
+.viewport{
+  outline: 1px solid #fff;
 }
