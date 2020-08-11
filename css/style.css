@@ -4,7 +4,7 @@
 body{
   margin: 0;
   padding: 0;
-  background-color: #32084C;
+  background-color: #222;
   font-family: 'Inconsolata', monospace;
 
 }
@@ -253,6 +253,7 @@ body{
   max-width: 850px;
   margin: auto;
   outline: 1px solid #fff;
+  background: #32084C;
 }
 .topbar header a{
   text-align: center;
@@ -266,4 +267,5 @@ body{
 }
 .viewport{
   outline: 1px solid #fff;
+  background: #32084C;
 }
