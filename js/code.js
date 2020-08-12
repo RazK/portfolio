@@ -73,26 +73,27 @@ document.querySelector('#viewport').addEventListener('mousemove', e => {
 let touchStartX, touchStartY;
 let touchStartPosX, touchStartPosY;
 let touchIsClick;
+let touchDx, touchDy;
 document.querySelector('#viewport').addEventListener('touchstart', e => {
   touchStartX=e.touches[0].clientX;
   touchStartY=e.touches[0].clientY;
   touchStartPosX = scrollPosX;
   touchStartPosY = scrollPosY;
-  touchIsClick = true;
+  touchDx = 0;
+  touchDy = 0;
   e.preventDefault();
 })
 
 document.querySelector('#viewport').addEventListener('touchmove', e => {
-  let touchDx = e.touches[0].clientX - touchStartX;
-  let touchDy = e.touches[0].clientY - touchStartY;
+  touchDx = e.touches[0].clientX - touchStartX;
+  touchDy = e.touches[0].clientY - touchStartY;
   scrollPosX = touchStartPosX + touchDx;
   scrollPosY = touchStartPosY + touchDy;
-  touchIsClick = false;
   e.preventDefault();
 })
 
 document.querySelector('#viewport').addEventListener('touchend', e => {
-  if(touchIsClick){
+  if(Math.abs(touchDx) < 10 && Math.abs(touchDy) < 10){
     e.target.click();
   }
   e.preventDefault();
